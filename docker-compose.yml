@@ -1,0 +1,20 @@
+services:
+  app:
+    # On the server, APP_IMAGE comes from a .env file (see README).
+    # Locally it falls back to building the Dockerfile.
+    image: ${APP_IMAGE:-flask-cicd-demo:local}
+    build: .
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
