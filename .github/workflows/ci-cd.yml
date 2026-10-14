@@ -77,6 +77,8 @@ jobs:
   deploy:
     name: Deploy to EC2
     needs: build-and-push
+    # Off until the repository variable DEPLOY_ENABLED is set to true (see README)
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Pull and restart on the server
