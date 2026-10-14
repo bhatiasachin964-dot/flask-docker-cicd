@@ -1,6 +1,6 @@
 # Flask App with Docker and a CI/CD Pipeline
 
-A small Flask API, containerized with a multi-stage Docker build, served through Nginx with Docker Compose, and shipped to an AWS EC2 server automatically by **GitHub Actions** on every push to `main`.
+A small Flask API, containerized with a multi-stage Docker build, served through Nginx with Docker Compose, and shipped to an AWS EC2 server by **GitHub Actions** on every push to `main`. The deploy step is switched off until you set up a server and turn it on (see *Deploy setup* below).
 
 <!-- TODO: add a screenshot of a green GitHub Actions run here -->
 <!-- TODO: add a screenshot or curl output of the live /health endpoint here -->
@@ -85,6 +85,10 @@ Under *Settings > Secrets and variables > Actions*:
 | `EC2_HOST` | Public IP or DNS name of the instance |
 | `EC2_USER` | SSH user (for example `ec2-user` or `ubuntu`) |
 | `EC2_SSH_KEY` | Private key contents. Use a dedicated deploy key, not your personal one. |
+
+### 4. Turn on the deploy job
+
+The deploy job is skipped by default, so the pipeline stays green before a server exists. Once the server and the three secrets are ready, add a repository **variable** under *Settings > Secrets and variables > Actions > Variables*: `DEPLOY_ENABLED` = `true`.
 
 Push to `main` and watch the **Actions** tab.
 
