@@ -1,5 +1,7 @@
 # Flask App with Docker and a CI/CD Pipeline
 
+[![CI/CD](https://github.com/bhatiasachin964-dot/flask-docker-cicd/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/bhatiasachin964-dot/flask-docker-cicd/actions/workflows/ci-cd.yml)
+
 A small Flask API, containerized with a multi-stage Docker build, served through Nginx with Docker Compose, and shipped to an AWS EC2 server by **GitHub Actions** on every push to `main`. The deploy step is switched off until you set up a server and turn it on (see *Deploy setup* below).
 
 <!-- TODO: add a screenshot of a green GitHub Actions run here -->
